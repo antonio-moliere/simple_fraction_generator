@@ -4,7 +4,7 @@ Aplicación web simple construida con Flask y SymPy para generar ejercicios de o
 
 ## Características
 
-*   Genera problemas aleatorios con fracciones algebraicas.
+*   Genera problemas aleatorios con fracciones.
 *   Utiliza SymPy para el manejo simbólico y la simplificación.
 *   Muestra el problema y la solución en formato LaTeX (renderizado con MathJax).
 *   Interfaz web simple con Flask.
