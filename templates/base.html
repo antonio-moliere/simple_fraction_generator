@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ejercicios de Fracciones Algebraicas{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- MathJax para renderizar LaTeX -->
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            // --- CAMBIO AQUÍ ---
+            processEscapes: false, // Cambiado de true a false
+            // ------------------
+            processEnvironments: true
+          },
+          options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+        };
+      </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+    <header>
+        <h1>Generador de Ejercicios</h1>
+        <h2>Operaciones Combinadas con Fracciones Algebraicas</h2>
+        <h3>(Dificultad 15+)</h3> {# Añadido para claridad #}
+    </header>
+    <main>
+        {% block content %}
+        <!-- El contenido específico de cada página irá aquí -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>© 2023 Tu Nombre o Nombre del Proyecto</p>
+    </footer>
+</body>
+</html>

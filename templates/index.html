@@ -1,0 +1,66 @@
+{% extends "base.html" %} {# Hereda de base.html para tener MathJax, CSS y estructura básica #}
+
+{# Define el título específico para esta página #}
+{% block title %}Generador de Ejercicios Avanzados{% endblock %}
+
+{# Define el contenido principal que se insertará en base.html #}
+{% block content %}
+<div class="exercise-container">
+
+    <h3>Resuelve la siguiente operación combinada:</h3>
+
+    {# Contenedor para el enunciado del problema #}
+    <div class="problem-statement">
+        <p>
+            {# Muestra el LaTeX del problema. Los $$ indican a MathJax que lo renderice. #}
+            {# '| safe' es CRUCIAL para que Jinja no escape los caracteres de LaTeX (\, {, }, etc.) #}
+            $$ {{ exercise.problem_latex | safe }} $$
+        </p>
+    </div>
+
+    {# Controles: botones para solución y nuevo ejercicio #}
+    <div class="controls">
+        <button id="show-solution-btn">Mostrar Solución</button>
+        {# Este enlace simplemente recarga la página raíz ('/'), que llama a la función index() de nuevo #}
+        <a href="{{ url_for('index') }}" class="button">Generar Nuevo Ejercicio</a>
+    </div>
+
+    {# Contenedor para la solución, inicialmente oculto (style="display: none;") #}
+    <div id="solution" style="display: none;">
+        <h4>Solución:</h4>
+        <p>
+            {# Muestra el LaTeX de la solución, también con el filtro 'safe' #}
+            $$ {{ exercise.solution_latex | safe }} $$
+        </p>
+    </div>
+
+</div> {# Fin de .exercise-container #}
+
+{# Script de JavaScript simple para manejar el botón de mostrar/ocultar #}
+{# Este script se ejecuta en el navegador del cliente #}
+<script>
+    // Espera a que el contenido HTML esté completamente cargado
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const showSolutionBtn = document.getElementById('show-solution-btn');
+        const solutionDiv = document.getElementById('solution');
+
+        // Asegurarse de que los elementos existen antes de añadir el listener
+        if (showSolutionBtn && solutionDiv) {
+            showSolutionBtn.addEventListener('click', function() {
+                // Comprueba si la solución está oculta
+                if (solutionDiv.style.display === 'none') {
+                    // Si está oculta, la muestra y cambia el texto del botón
+                    solutionDiv.style.display = 'block'; // O 'inline' o '' según el estilo deseado
+                    this.textContent = 'Ocultar Solución';
+                } else {
+                    // Si está visible, la oculta y restaura el texto del botón
+                    solutionDiv.style.display = 'none';
+                    this.textContent = 'Mostrar Solución';
+                }
+            });
+        } else {
+            console.warn("Botón de solución o div de solución no encontrado.");
+        }
+    });
+</script>
+{% endblock %} {# Fin del bloque de contenido #}
