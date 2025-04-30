@@ -35,13 +35,13 @@ def _generate_sympy_term(allow_integer=True, max_val=15, avoid_zero=False, avoid
 
 # --- Función Principal ---
 
-def generate_simple_combined_exercise(num_terms=4, max_power=3, difficulty_level=1):
+def generate_simple_combined_exercise(num_terms=10, max_power=3, difficulty_level=1):
     """
     Genera un ejercicio de operaciones combinadas (+, -, *, /, ^) con fracciones numéricas.
     Devuelve un diccionario con LaTeX para problema y solución (sin delimitadores $).
     """
     if num_terms < 2:
-        num_terms = 2
+        num_terms = 10
 
     operations_pool = [Add, Add, Add, Mul, Mul, Pow, Pow]
 
