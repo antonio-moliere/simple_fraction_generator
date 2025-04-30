@@ -45,12 +45,17 @@ Aplicación web simple construida con Flask y SymPy para generar ejercicios de o
 
 ## Ejecución
 
-1.  Asegúrate de que tu entorno Conda esté activado.
-2.  Ejecuta la aplicación Flask:
+1.  Asegúrate de que tu entorno Conda esté activado:
     ```bash
-    python app.py
+    conda create --name simple_fraction_generator
+    conda activate simple_fraction_generator
+    cd simple_fraction_generator(
     ```
-3.  Abre tu navegador web y ve a `http://127.0.0.1:5000` (o la dirección que indique Flask).
+3.  Ejecuta la aplicación Flask:
+    ```bash
+    python3 app.py
+    ```
+4.  Abre tu navegador web y ve a `http://127.0.0.1:5000` (o la dirección que indique Flask).
 
 ## Estructura del Proyecto
 /algebraic_fractions_app
